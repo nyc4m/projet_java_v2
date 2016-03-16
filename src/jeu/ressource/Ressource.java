@@ -41,16 +41,17 @@ public class Ressource {
      
 /////// Set //////////////////
     public void setOr(int or) throws ressInfZero{
-        if(this.or + or < 0) throw new ressInfZero();
+        if(or <0) throw new ressInfZero();
         this.or = or;
     }
 
     public void setPierre(int pierre) throws ressInfZero{
-        if(this.pierre + pierre < 0) throw new ressInfZero();
+        if(pierre < 0) throw new ressInfZero();
         this.pierre = pierre;
     }
 
-    public void setBois(int bois) {
+    public void setBois(int bois) throws ressInfZero{
+        if(bois < 0) throw new ressInfZero();
         this.bois = bois;
     }
     

@@ -8,12 +8,13 @@ package jeu.batiment;
 import jeu.ressource.Ressource;
 import jeu.exception.nivInf;
 import jeu.exception.ressInfZero;
+import jeu.Interface.Batiment_I;
 
 /**
  *
  * @author Baptiste
  */
-public class Batiment {
+public class Batiment implements Batiment_I {
 
     /**
      * Contient le prix du batiment

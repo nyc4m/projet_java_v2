@@ -12,6 +12,7 @@ import jeu.exception.ressInfZero;
  * @author Baptiste
  */
 public class Ressource {
+
     /**
      * Exprime une quatité d'or
      */
@@ -24,21 +25,28 @@ public class Ressource {
      * Exprime une quatité de bois
      */
     private int bois;
+
     /**
      * Constructeur du type Ressource, qui permet de stocker des ressources
      * comme la pierre, l'or ou encore le bois. Elle permet de définir un prix,
      * ou un crédit.
+     *
      * @param or quantité d'or à attribuer
      * @param pierre quantité de pierre à attribuer
      * @param bois quantité de bois à attribuer
      */
-    public Ressource(int or, int pierre, int bois){
+    public Ressource(int or, int pierre, int bois) {
         this.bois = bois;
         this.pierre = pierre;
         this.or = or;
     }
-    
-    public String toString(){
+
+    /**
+     * Permet d'afficher les ressources
+     *
+     * @return la valeur convertie en chaine des ressources
+     */
+    public String toString() {
         String s;
         s = "Or ";
         s += this.or;
@@ -49,37 +57,73 @@ public class Ressource {
         s += ".";
         return s;
     }
-    
-     
+
 /////// Set //////////////////
-    public void setOr(int or) throws ressInfZero{
-        if(or <0) throw new ressInfZero();
+    /**
+     * Modifie la valeur de l'or
+     *
+     * @param or nouvelle valeur pour l'or
+     * @throws ressInfZero Si le nouveau montant est inférieur à 0, une
+     * exception est levée
+     */
+    public void setOr(int or) throws ressInfZero {
+        if (or < 0) {
+            throw new ressInfZero();
+        }
         this.or = or;
     }
 
-    public void setPierre(int pierre) throws ressInfZero{
-        if(pierre < 0) throw new ressInfZero();
+    /**
+     * Modifie la quantité de pierre
+     *
+     * @param pierre nouvelle quantité de pierre
+     * @throws ressInfZero Si le nouveau montant est inférieur à 0, une
+     * exception est levée
+     */
+    public void setPierre(int pierre) throws ressInfZero {
+        if (pierre < 0) {
+            throw new ressInfZero();
+        }
         this.pierre = pierre;
     }
 
-    public void setBois(int bois) throws ressInfZero{
-        if(bois < 0) throw new ressInfZero();
+    /**
+     * Modifie la quantité de bois
+     *
+     * @param bois nouvelle quantité de bois
+     * @throws ressInfZero Si le nouveau montant est inférieur à 0, une
+     * exception est levée
+     */
+    public void setBois(int bois) throws ressInfZero {
+        if (bois < 0) {
+            throw new ressInfZero();
+        }
         this.bois = bois;
     }
-    
-//////// Get ////////////////
 
+//////// Get ////////////////
+    /**
+     *
+     * @return Retourne la quantité d'or
+     */
     public int getOr() {
         return or;
     }
 
+    /**
+     *
+     * @return Retourne la quantité de pierre
+     */
     public int getPierre() {
         return pierre;
     }
 
+    /**
+     *
+     * @return Retourne la quantité de bois
+     */
     public int getBois() {
         return bois;
     }
-    
-    
+
 }

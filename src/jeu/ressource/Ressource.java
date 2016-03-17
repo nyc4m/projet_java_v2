@@ -38,6 +38,18 @@ public class Ressource {
         this.or = or;
     }
     
+    public String toString(){
+        String s;
+        s = "Or ";
+        s += this.or;
+        s += " Bois ";
+        s += this.bois;
+        s += " Pierre ";
+        s += this.pierre;
+        s += ".";
+        return s;
+    }
+    
      
 /////// Set //////////////////
     public void setOr(int or) throws ressInfZero{

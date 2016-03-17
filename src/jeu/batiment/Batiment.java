@@ -8,13 +8,12 @@ package jeu.batiment;
 import jeu.ressource.Ressource;
 import jeu.exception.nivInf;
 import jeu.exception.ressInfZero;
-import jeu.Interface.Batiment_I;
 
 /**
  *
  * @author Baptiste
  */
-public class Batiment implements Batiment_I {
+public class Batiment {
 
     /**
      * Contient le prix du batiment
@@ -34,6 +33,27 @@ public class Batiment implements Batiment_I {
         this.prix = prix;
 
     }
+
+    /**
+     * Methode permettant au joueur d'acheter un niveau
+     *
+     * @param ressJ Contient les ressources du joueur.
+     * @return
+     */
+    public boolean acheterNiveau(Ressource ressJ) {
+        boolean valide = true;
+        try {
+            ressJ.setOr(ressJ.getOr() - this.prix.getOr());
+            ressJ.setBois(ressJ.getBois() - this.prix.getBois());
+            ressJ.setPierre(ressJ.getPierre() - this.prix.getPierre());
+
+        } catch (ressInfZero e) {
+            valide = false;
+
+        }
+
+        return valide;
+    }
 ////////////// SET /////////////////////
 
     public void setNiveau(int niveau) throws nivInf {
@@ -43,40 +63,42 @@ public class Batiment implements Batiment_I {
         this.niveau = niveau;
     }
 
-    public void augmenterNiveau() {
-        niveau++;
-        try {
-            this.prix.setOr(this.prix.getOr() * 2);
-        } catch (ressInfZero e) {
+    public void augmenterNiveau(Ressource ressJ) {
+        if (this.acheterNiveau(ressJ)) {
+            niveau++;
+            try {
+                this.prix.setOr(this.prix.getOr() * 2);
+            } catch (ressInfZero e) {
+            }
+
+            if (prix.getBois() == 0) {
+                try {
+                    this.prix.setBois(10);
+                } catch (ressInfZero e) {
+                }
+            } else {
+                try {
+                    this.prix.setBois(this.prix.getBois() * 2);
+                } catch (ressInfZero e) {
+                }
+            }
+
+            if (this.prix.getPierre() == 0) {
+                try {
+                    this.prix.setPierre(20);
+                } catch (ressInfZero e) {
+
+                }
+
+            } else {
+                try {
+                    this.prix.setPierre(this.prix.getPierre() * 2);
+                } catch (ressInfZero e) {
+
+                }
+            }
         }
 
-        if (prix.getBois() == 0) {
-            try {
-                this.prix.setBois(10);
-            } catch (ressInfZero e) {
-            }
-        } else {
-            try {
-                this.prix.setBois(this.prix.getBois() * 2);
-            } catch (ressInfZero e) {
-            }
-        }
-
-        if (this.prix.getPierre() == 0) {
-            try {
-                this.prix.setPierre(20);
-            } catch (ressInfZero e) {
-
-            }
-
-        } else {
-            try {
-                this.prix.setPierre(this.prix.getPierre() * 2);
-            } catch (ressInfZero e) {
-
-            }
-        }
-        
     }
 
 }

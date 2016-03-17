@@ -46,13 +46,13 @@ public class Panneau extends JPanel {
    /*
     * Faire une division de getWidth et getHeight revient à calculer selon la taille
     de la fenetre l'emplacement du texte, a noter que grâce à cela le texte bouge
-    en continu de la taille de la fenetre
+    en fonction de la taille de la fenetre
     */ 
     g.drawString("THE ULTIMATE RPG", this.getWidth()/4, this.getHeight()/6); 
     g.setColor(Color.black);
     g.drawString("Nouvelle partie", this.getWidth()/9, this.getHeight()/4);
     g.drawString("Continuer", this.getWidth()/9, (int) (this.getHeight()/3.4));
-    g.drawString("Quiter", this.getWidth()/9,  this.getHeight()/3); 
+    g.drawString("Quitter", this.getWidth()/9,  this.getHeight()/3); 
     
        
   

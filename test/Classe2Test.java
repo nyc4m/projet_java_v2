@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import jeu.Interface.Fenetre;
  import jeu.ressource.Ressource;
  import jeu.exception.ressInfZero;
 /**
@@ -24,5 +25,7 @@ public class Classe2Test {
         }catch(ressInfZero e){
             
         }
+        
+    Fenetre fen = new Fenetre();    
     }
 }

@@ -48,13 +48,26 @@ public class Batiment {
      */
     public boolean acheterNiveau(Ressource ressJ) {
         boolean valide = true;
+
+        //On stocke les ressources du joueur dans le but de les restaurer si jamais il n'a pas assez de ressources pour acheter une amélioration
+        int tempPierre = ressJ.getPierre();
+        int tempOr = ressJ.getOr();
+        int tempBois = ressJ.getBois();
         try {
             ressJ.setOr(ressJ.getOr() - this.prix.getOr());
             ressJ.setBois(ressJ.getBois() - this.prix.getBois());
             ressJ.setPierre(ressJ.getPierre() - this.prix.getPierre());
 
         } catch (ressInfZero e) {
+            //Dans le cas où l'exception "le joueur n'a pas assez de ressources" est levée, on restaure les ressources du joueur, comme s'il n'avait pas effectué cette action.
             valide = false;
+            try {
+                ressJ.setOr(tempOr);
+                ressJ.setPierre(tempPierre);
+                ressJ.setBois(tempBois);
+            } catch (ressInfZero e2) {
+
+            }
 
         }
 

@@ -14,10 +14,11 @@ import jeu.exception.ressInfZero;
 public class Classe2Test {
 
     public static void main(String[] args) {
-        Batiment batTest = new Batiment("Test", new Ressource(20,10,10));
+        Batiment batTest = new Batiment("Test", new Ressource(10,10,10));
         Ressource ressTest = new Ressource(15,15,15);
         
         batTest.augmenterNiveau(ressTest);
         System.out.println(ressTest.toString());
+        System.out.println(batTest.toString());
     }
 }

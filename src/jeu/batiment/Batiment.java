@@ -132,4 +132,20 @@ public class Batiment {
 
     }
 
+    public String toString() {
+        String str;
+        str = this.nom;
+        if (this.niveau < 1) {
+            str += " est dans un état lamentable.";
+        } else if (this.niveau == 1) {
+            str += " est dans un bon état.";
+        } else {
+            str += " est complètement restauré.";
+        }
+
+        str += " (niveau : " + this.niveau + " )";
+
+        return str;
+    }
+
 }

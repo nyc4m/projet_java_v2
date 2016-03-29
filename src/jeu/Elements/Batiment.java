@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jeu.batiment;
+package jeu.Elements;
 
-import jeu.ressource.Ressource;
+import jeu.Elements.Ressource;
 import jeu.exception.nivInf;
 import jeu.exception.ressInfZero;
 

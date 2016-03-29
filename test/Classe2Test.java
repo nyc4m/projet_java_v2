@@ -3,8 +3,11 @@
  * Doit être utilisée pour tester les fonctionnalitées du jeu.
  */
 import jeu.Interface.Fenetre;
-import jeu.batiment.Batiment;
-import jeu.ressource.Ressource;
+import jeu.Elements.Batiment;
+import jeu.Elements.ElementHeros;
+import jeu.Elements.Heros;
+import jeu.Elements.Liste;
+import jeu.Elements.Ressource;
 import jeu.exception.ressInfZero;
 
 /**
@@ -14,11 +17,11 @@ import jeu.exception.ressInfZero;
 public class Classe2Test {
 
     public static void main(String[] args) {
-        Batiment batTest = new Batiment("Test", new Ressource(10,10,10));
-        Ressource ressTest = new Ressource(15,15,15);
-        
-        batTest.augmenterNiveau(ressTest);
-        System.out.println(ressTest.toString());
-        System.out.println(batTest.toString());
+        Liste liste = new Liste();
+        liste.ajouterElement(new ElementHeros("Fox", "RAS"));
+        liste.ajouterElement(new ElementHeros("Goku", "RAS"));
+        System.out.println(liste.nbElement());
+        System.out.println(liste.getDernier());
+        System.out.println(liste.getPremier());
     }
 }

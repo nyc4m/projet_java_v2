@@ -2,7 +2,6 @@ package jeu.Interface;
 
 
 import java.util.Scanner;
-import jeu.batiment.*;
 import jeu.exception.*;
 
 /**

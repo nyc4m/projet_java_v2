@@ -40,6 +40,8 @@ public class Heros {
     public Heros(String nom, String description) {
         this.nom = nom;
         this.description = description;
+        this.vie = 100;
+        this.moral = 100;
     }
 
     /**
@@ -66,7 +68,7 @@ public class Heros {
      */
     public void enleverPv(int quantité) {
         try {
-            this.setVie(quantité);
+            this.setVie(this.vie - quantité);
         } catch (vieInfZero e) {
             this.mourir();
         }
@@ -77,8 +79,7 @@ public class Heros {
      */
     public void mourir() {
         this.vie = 0;
-        this.description = this.nom;
-        this.description += " Ce héros est mort.";
+        this.description = " Ce héros est mort.";
     }
 
     /**
@@ -88,11 +89,12 @@ public class Heros {
      * @throws vieInfZero jette une exception si la vie descend à 0 ou moins.
      */
     public void setVie(int vie) throws vieInfZero {
-        if (this.getVie() - vie <= 0) {
+        this.vie = vie;
+        if (this.vie <= 0) {
             throw new vieInfZero();
-        } else {
-            this.vie = vie;
+
         }
+
     }
 
     /**
@@ -101,10 +103,11 @@ public class Heros {
      * @param moral la nouvelle valeur du moral
      */
     public void setMoral(int moral) throws moralInfZero {
-        if (this.moral - moral <= 0) {
+
+        this.moral = moral;
+        if (this.moral <= 0) {
             throw new moralInfZero();
         }
-        this.moral = moral;
     }
 
     /**
@@ -124,4 +127,14 @@ public class Heros {
     public int getMoral() {
         return moral;
     }
+
+    /**
+     * Methode permettant d'obtenir le nom du héros
+     *
+     * @return Retourne une chaine de caractère contenant le nom deu héros
+     */
+    public String getNom() {
+        return nom;
+    }
+
 }

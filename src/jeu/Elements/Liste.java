@@ -78,11 +78,77 @@ public class Liste {
     }
 
     /**
+     * Cherche un héros, et donne son rang
+     *
+     * @param heros
+     * @return retourne la position du héros dans la liste
+     */
+    public int rechercher(Heros heros) throws Exception {
+        boolean termine = false;
+        int rang = 1;
+        int nbElement = this.nbElement();
+        ElementHeros pointeur;
+        pointeur = this.premier;
+        while (!termine) {
+            if (pointeur.getNom().equals(heros.getNom())) {
+                termine = true;
+            } else {
+                rang++;
+                pointeur = pointeur.getSuivant();
+                if (rang > nbElement) {
+                    throw new Exception("Héros inexistant dans cette liste");
+                }
+
+            }
+
+        }
+        return rang;
+    }
+
+    /**
      * Permet de supprimer un héros passé en paramètre
      *
      * @param heros le héros à supprimer
      */
     public void supprimerHeros(ElementHeros heros) {
+        ElementHeros pointeur = this.premier;
+        try {
+            int rang = rechercher(heros);
+            if (rang == 1) {
+                this.supprimerPremier();
+            } else if (rang == this.nbElement()) {
+                this.supprimerDernier();
+            } else {
+                for(int i = 1 ; i < rang-1; i++){
+                    pointeur = pointeur.getSuivant();
+                }
+                pointeur.relier(pointeur.getSuivant().getSuivant());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " " + "\"" + heros.getNom() + "\"");
+            System.out.println("");
+        }
+
+    }
+
+    /**
+     * Methode supprimant le premier element de la liste
+     */
+    public void supprimerPremier() {
+        this.premier = this.premier.getSuivant();
+    }
+
+    /**
+     * Methode supprimant le premier element de la liste
+     */
+    public void supprimerDernier() {
+        ElementHeros pointeur;
+        pointeur = this.premier;
+        while (pointeur.getSuivant() != this.dernier) {
+            pointeur = pointeur.getSuivant();
+        }
+        pointeur.relier(null);
+        this.dernier = pointeur;
 
     }
 
@@ -93,5 +159,16 @@ public class Liste {
     public ElementHeros getDernier() {
         return dernier;
     }
-    
+
+    public String toString() {
+        String str = "";
+        ElementHeros pointeur = this.premier;
+        while (pointeur != null) {
+            str += pointeur.toString();
+            str += "\n";
+            pointeur = pointeur.getSuivant();
+        }
+        return str;
+    }
+
 }

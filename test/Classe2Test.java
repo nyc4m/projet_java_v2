@@ -19,15 +19,12 @@ public class Classe2Test {
 
     public static void main(String[] args) {
         Liste liste = new Liste();
-        liste.ajouterElement(new ElementHeros("Trunks", "RAS"));
-        liste.ajouterElement(new ElementHeros("Goku", "RAS"));
-        liste.ajouterElement(new ElementHeros("Vegeta", "RAS"));
-        liste.ajouterElement(new ElementHeros("Gohan", "RAS"));
+        Heros trunks = new Heros("Trunks", "Un guerrier");
+        liste.ajouterElement(trunks.HerosToElement());
         System.out.println(liste);
-        liste.supprimerHeros(new ElementHeros("Trunks", "RAS"));
-        liste.supprimerHeros(new ElementHeros("Veget", ""));
-        System.out.println(liste.toString());
-        System.out.println(liste.getPremier());
-        System.out.println(liste.getDernier());
+        Heros trunks2 = liste.ElementToHeros(new ElementHeros("Trunks", "RAS"));
+        System.out.println(trunks2);
+        trunks2.enleverPv(100);
+        System.out.println(trunks2);
     }
 }

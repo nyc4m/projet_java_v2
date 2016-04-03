@@ -119,7 +119,7 @@ public class Liste {
             } else if (rang == this.nbElement()) {
                 this.supprimerDernier();
             } else {
-                for(int i = 1 ; i < rang-1; i++){
+                for (int i = 1; i < rang - 1; i++) {
                     pointeur = pointeur.getSuivant();
                 }
                 pointeur.relier(pointeur.getSuivant().getSuivant());
@@ -169,6 +169,34 @@ public class Liste {
             pointeur = pointeur.getSuivant();
         }
         return str;
+    }
+/**
+ * Methode qui convertie un elementHeros en Heros
+ * @param heros le héros a convertir
+ * @return retourne l'elementHeros recherché, convertie en heros 
+ */
+    public Heros ElementToHeros(ElementHeros heros) {
+        Heros herosReturn = null;
+        try {
+            int rang = this.rechercher(heros);
+            if (rang == 1) {
+                herosReturn = new Heros(this.premier.getNom(), this.premier.getDescription(), this.premier.getMoral(), this.premier.getVie());
+            } else if (rang == this.nbElement()) {
+                herosReturn = new Heros(this.dernier.getNom(), this.dernier.getDescription(), this.dernier.getMoral(), this.dernier.getVie());
+            } else {
+                ElementHeros pointeur;
+                pointeur = this.premier;
+                for (int i = 1; i <= rang; i++) {
+                    pointeur = pointeur.getSuivant();
+                }
+                herosReturn = new Heros(pointeur.getNom(), pointeur.getDescription(), pointeur.getMoral(), pointeur.getVie());
+            }
+            
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return herosReturn;
     }
 
 }

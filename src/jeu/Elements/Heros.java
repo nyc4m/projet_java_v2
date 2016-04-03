@@ -44,6 +44,21 @@ public class Heros {
         this.moral = 100;
     }
 
+    public Heros(String nom, String description, int moral, int vie) {
+        this.nom = nom;
+        this.description = description;
+        try {
+            this.setMoral(moral);
+        } catch (moralInfZero e) {
+
+        }
+        try {
+            this.setVie(vie);
+        } catch (vieInfZero e) {
+
+        }
+    }
+
     /**
      * Permet d'afficher le héros
      *
@@ -56,6 +71,10 @@ public class Heros {
         str += "\n";
         str += "Description : ";
         str += this.description;
+        str += "\n";
+        str += "Vie : ";
+        str += this.vie;
+
         return str;
 
     }
@@ -137,4 +156,17 @@ public class Heros {
         return nom;
     }
 
+    /**
+     * Permet d'obtenir la description du héros
+     *
+     * @return Retourne une chaine contenant la description du héros
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    public ElementHeros HerosToElement() throws vieInfZero, moralInfZero {
+        ElementHeros element = new ElementHeros(this.nom, this.description, this.moral, this.vie);
+        return element;
+    }
 }

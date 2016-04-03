@@ -5,6 +5,9 @@
  */
 package jeu.Elements;
 
+import jeu.exception.moralInfZero;
+import jeu.exception.vieInfZero;
+
 /**
  *
  * @author Baptiste
@@ -21,6 +24,11 @@ public class ElementHeros extends Heros{
      */
     public ElementHeros(String nom, String description) {
         super(nom, description);
+        this.suivant = null;
+    }
+    
+    public ElementHeros(String nom, String description, int moral, int vie){
+        super(nom, description, moral, vie);
         this.suivant = null;
     }
     /**
